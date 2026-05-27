@@ -41,11 +41,11 @@ namespace HLTStudio.Games.Gameplays
 		{
 			if (weapon is OrdinaryLearnedWeapon)
 			{
-				GEMain.I.WeaponController.Add(new AnnihilationExplosion(weapon.X, weapon.Y)); // 仮
+				GEMain.I.WeaponController.Add(new AnnihilateExplode(weapon.X, weapon.Y)); // 仮
 			}
 			else if (weapon is OrdinaryLearnedWeapon2)
 			{
-				GEMain.I.WeaponController.Add(new AnnihilationExplosion(weapon.X, weapon.Y)); // 仮
+				GEMain.I.WeaponController.Add(new AnnihilateExplode(weapon.X, weapon.Y)); // 仮
 			}
 			else
 			{

@@ -10,11 +10,11 @@ using HLTStudio.GameCustoms;
 
 namespace HLTStudio.Games.Gameplays.Weapons
 {
-	public class AnnihilationExplosion : WeaponBase
+	public class AnnihilateExplode : WeaponBase
 	{
 		private const int ATTACK_POINT_PER_FRAME = 3;
 
-		public AnnihilationExplosion(double x, double y)
+		public AnnihilateExplode(double x, double y)
 		{
 			this.Initialize(x, y, ATTACK_POINT_PER_FRAME, false);
 		}
@@ -47,7 +47,7 @@ namespace HLTStudio.Games.Gameplays.Weapons
 
 		public override Type GetLearnedBulletType()
 		{
-			throw null;
+			throw null; // never
 		}
 	}
 }

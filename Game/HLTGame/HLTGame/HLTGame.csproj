@@ -117,6 +117,7 @@
     <Compile Include="Games\Gameplays\Enemies\Items\OrdinaryItem.cs" />
     <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemyBase.cs" />
     <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemy_Sample.cs" />
+    <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemy_ScriptRunner.cs" />
     <Compile Include="Games\Gameplays\Enemies\OrdinaryEnemy.cs" />
     <Compile Include="Games\Gameplays\Enemies\OrdinaryEnemy2.cs" />
     <Compile Include="Games\Gameplays\EnemyController.cs" />
@@ -138,6 +139,11 @@
     <Compile Include="Games\Gameplays\Weapons\WeaponCommon.cs" />
     <Compile Include="GUIProcMain.cs" />
     <Compile Include="GameCustoms\Inputs.cs" />
+    <Compile Include="KScripts\KCommand.cs" />
+    <Compile Include="KScripts\KCommandParser.cs" />
+    <Compile Include="KScripts\KScriptCache.cs" />
+    <Compile Include="KScripts\KScriptConsts.cs" />
+    <Compile Include="KScripts\KScriptPictures.cs" />
     <Compile Include="MainWin.cs">
       <SubType>Form</SubType>
     </Compile>
