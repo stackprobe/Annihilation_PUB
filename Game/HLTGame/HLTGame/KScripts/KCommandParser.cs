@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
+using System.IO;
 using HLTStudio.Commons;
 
 namespace HLTStudio.KScripts
@@ -15,7 +15,7 @@ namespace HLTStudio.KScripts
 		private const string COMMAND_LP_BGN = "繰り返し";
 		private const string COMMAND_LP_END = "繰り返し終了";
 
-		public static KCommand Parse(string functionName, string[] lines)
+		public static KCommand Internal_Parse(string functionName, string[] lines)
 		{
 			KCommand functionCommand = KCommand.CreateFunction(functionName);
 
@@ -83,9 +83,9 @@ namespace HLTStudio.KScripts
 				if (tokens.Length >= 2 && tokens[1] == "=")
 				{
 					commands.Add(KCommand.CreateAssignment(
-						tokens[0],
-						tokens.Skip(2).ToArray())
-						);
+						KScriptConsts.DUMMY_NAME,
+						tokens
+						));
 				}
 				else
 				{

@@ -4,34 +4,50 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HLTStudio.Commons;
+using HLTStudio.Drawings;
 using HLTStudio.GameCommons;
+using HLTStudio.GameCustoms;
+using HLTStudio.KScripts;
 
 namespace HLTStudio.Games.Gameplays.Enemies.KEnemies
 {
 	public class KEnemy_ScriptRunner : KEnemyBase
 	{
-		//private double CharacterRadius = 30.0;
-		private SortedDictionary<string, double> Variables = new SortedDictionary<string, double>();
+		public double CharacterRadius = 30.0;
+		public APicture Picture = Pictures.Transparent;
 
-		public KEnemy_ScriptRunner(string scriptName, double x, double y, params double[] scriptParameters)
+		private Func<bool> F_Script;
+
+		public KEnemy_ScriptRunner(string scriptName, double x, double y, params string[] scriptParameters)
 			: base(x, y, 1)
 		{
-			throw null; // TODO
+			this.F_Script = SCommon.Supplier(KEngine.Run(new KVariables(this), scriptName, scriptParameters));
 		}
 
 		protected override IEnumerable<bool> E_EachFrame2()
 		{
-			throw null; // TODO
+			for (; ; )
+			{
+				if (!this.F_Script())
+					break;
+
+				DD.Draw(this.GetPicture(), new D2Point(this.X, this.Y));
+
+				this.Crash = ACrash.CreateCircle(new D2Point(this.X, this.Y), this.CharacterRadius);
+
+				yield return true;
+			}
 		}
 
 		protected override double GetCharacterRadius()
 		{
-			throw null; // TODO
+			return this.CharacterRadius;
 		}
 
 		protected override APicture GetPicture()
 		{
-			throw null; // TODO
+			return this.Picture;
 		}
 	}
 }

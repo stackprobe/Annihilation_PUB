@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
+using System.IO;
 using HLTStudio.Commons;
 
 namespace HLTStudio.KScripts
@@ -50,12 +50,12 @@ namespace HLTStudio.KScripts
 
 		public static KCommand CreateIf(string[] condition)
 		{
-			return new KCommand(Kind_e.IF, "IF", condition);
+			return new KCommand(Kind_e.IF, KScriptConsts.DUMMY_NAME, condition);
 		}
 
 		public static KCommand CreateLoop(string[] condition)
 		{
-			return new KCommand(Kind_e.LOOP, "LOOP", condition);
+			return new KCommand(Kind_e.LOOP, KScriptConsts.DUMMY_NAME, condition);
 		}
 	}
 }

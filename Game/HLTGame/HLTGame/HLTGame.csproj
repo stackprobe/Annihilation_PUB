@@ -139,11 +139,15 @@
     <Compile Include="Games\Gameplays\Weapons\WeaponCommon.cs" />
     <Compile Include="GUIProcMain.cs" />
     <Compile Include="GameCustoms\Inputs.cs" />
+    <Compile Include="KScripts\KCalc.cs" />
     <Compile Include="KScripts\KCommand.cs" />
     <Compile Include="KScripts\KCommandParser.cs" />
+    <Compile Include="KScripts\KEngine.cs" />
+    <Compile Include="KScripts\KPrimitives.cs" />
     <Compile Include="KScripts\KScriptCache.cs" />
     <Compile Include="KScripts\KScriptConsts.cs" />
     <Compile Include="KScripts\KScriptPictures.cs" />
+    <Compile Include="KScripts\KVariables.cs" />
     <Compile Include="MainWin.cs">
       <SubType>Form</SubType>
     </Compile>

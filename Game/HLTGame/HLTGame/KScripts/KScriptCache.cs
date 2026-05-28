@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using HLTStudio.Commons;
 using HLTStudio.GameCommons;
@@ -13,7 +13,7 @@ namespace HLTStudio.KScripts
 	{
 		private static Dictionary<string, KCommand> Cache = new Dictionary<string, KCommand>();
 
-		public static KCommand GetPicture(string name)
+		public static KCommand GetFunctionCommand(string name)
 		{
 			if (!SCommon.IsFairLocalPath(name, -1))
 				throw null; // never
@@ -25,7 +25,7 @@ namespace HLTStudio.KScripts
 				string resText = Encoding.UTF8.GetString(resData);
 				string[] resLines = SCommon.TextToLines(resText);
 
-				Cache.Add(name, KCommandParser.Parse(name, resLines));
+				Cache.Add(name, KCommandParser.Internal_Parse(name, resLines));
 			}
 			return Cache[name];
 		}
