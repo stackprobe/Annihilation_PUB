@@ -16,17 +16,17 @@ namespace HLTStudio.KScripts
 			if (arguments[1] != "=")
 				throw new Exception("計算式の2番目のトークンは [[ = ]] である必要があります。");
 
-			double value = Internal_Calculate(variables, arguments, 2);
+			double value = Calculate(variables, arguments, 2);
 
 			variables.SetValue(arguments[0], value);
 		}
 
-		public static double Internal_Calculate(KVariables variables, string[] arguments)
+		public static double Calculate(KVariables variables, string[] arguments)
 		{
-			return Internal_Calculate(variables, arguments, 0);
+			return Calculate(variables, arguments, 0);
 		}
 
-		public static double Internal_Calculate(KVariables variables, string[] arguments, int startIndex)
+		public static double Calculate(KVariables variables, string[] arguments, int startIndex)
 		{
 			int index = startIndex;
 			double value = ParseExpression(variables, arguments, ref index);

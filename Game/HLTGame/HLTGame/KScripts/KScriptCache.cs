@@ -22,12 +22,33 @@ namespace HLTStudio.KScripts
 			{
 				string resPath = Path.Combine(KScriptConsts.RESDIR_SCRIPT, name + ".txt");
 				byte[] resData = DD.GetStorageFileData(resPath).Data.Value;
-				string resText = Encoding.UTF8.GetString(resData);
+				string resText = BinaryToText(resData);
 				string[] resLines = SCommon.TextToLines(resText);
 
-				Cache.Add(name, KCommandParser.Internal_Parse(name, resLines));
+				Cache.Add(name, KCommandParser.Run(name, resLines));
 			}
 			return Cache[name];
+		}
+
+		private static string BinaryToText(byte[] data)
+		{
+			Encoding encoding;
+
+			if (HasUTF8_BOM(data))
+				encoding = Encoding.UTF8;
+			else
+				encoding = SCommon.ENCODING_SJIS;
+
+			return encoding.GetString(data);
+		}
+
+		private static bool HasUTF8_BOM(byte[] data)
+		{
+			return
+				data.Length >= 3 &&
+				data[0] == 0xEF &&
+				data[1] == 0xBB &&
+				data[2] == 0xBF;
 		}
 	}
 }

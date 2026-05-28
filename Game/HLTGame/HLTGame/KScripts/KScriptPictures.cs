@@ -19,7 +19,7 @@ namespace HLTStudio.KScripts
 				throw null; // never
 
 			if (!Cache.ContainsKey(name))
-				Cache.Add(name, new APicture(Path.Combine(KScriptConsts.RESDIR_PICTURE, name + ".png")));
+				Cache.Add(name, new APicture(() => DD.GetStorageFileData(Path.Combine(KScriptConsts.RESDIR_PICTURE, name + ".png"))));
 
 			return Cache[name];
 		}

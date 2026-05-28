@@ -25,8 +25,8 @@ namespace HLTStudio.Games.Gameplays.Enemies.KEnemies
 					throw new Exception("出現位置がバトルフィールドから離れすぎています。");
 			}
 
-			if (hp < 1 || SCommon.IMAX < hp)
-				throw new Exception("不正な体力(1～)");
+			if (hp < 0 || SCommon.IMAX < hp)
+				throw new Exception("不正な体力(0～)");
 
 			this.Initialize(x, y, hp);
 		}
@@ -44,7 +44,7 @@ namespace HLTStudio.Games.Gameplays.Enemies.KEnemies
 				if (!f_eachFrame3())
 					break;
 
-				if (this.HP < 1)
+				if (this.Crashed && this.HP < 1)
 				{
 					GEMain.I.EnemyController.Add(new OrdinaryItem(this.X, this.Y));
 					DD.TL.Add(SCommon.Supplier(this.KilledEffect()));

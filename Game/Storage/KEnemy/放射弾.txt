@@ -1,0 +1,11 @@
+COUNT = P1
+SPEED = P2
+
+I = 0
+繰り返し I < COUNT
+
+	R = 360 / COUNT * I
+	発射 弾 R SPEED
+
+	I = I + 1
+繰り返し終了

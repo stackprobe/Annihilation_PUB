@@ -31,9 +31,9 @@ namespace HLTStudio
 #if DEBUG
 			// -- choose one --
 
-			TitleMenu.Run();
+			//TitleMenu.Run();
 			//Main4();
-			//Test01();
+			Test01();
 
 			// --
 #endif

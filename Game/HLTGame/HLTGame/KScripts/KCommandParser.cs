@@ -15,7 +15,7 @@ namespace HLTStudio.KScripts
 		private const string COMMAND_LP_BGN = "繰り返し";
 		private const string COMMAND_LP_END = "繰り返し終了";
 
-		public static KCommand Internal_Parse(string functionName, string[] lines)
+		public static KCommand Run(string functionName, string[] lines)
 		{
 			KCommand functionCommand = KCommand.CreateFunction(functionName);
 

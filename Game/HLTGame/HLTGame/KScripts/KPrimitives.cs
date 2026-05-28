@@ -80,10 +80,15 @@ namespace HLTStudio.KScripts
 				arguments[0],
 				variables.Enemy.X,
 				variables.Enemy.Y,
-				arguments.Skip(1).ToArray()
+				SolveVarNames(variables, arguments, 1)
 				));
 
 			yield break;
+		}
+
+		private static string[] SolveVarNames(KVariables variables, string[] arguments, int startIndex)
+		{
+			return arguments.Skip(startIndex).Select(argument => Calculate(variables, argument).ToString("F9")).ToArray();
 		}
 
 		public static IEnumerable<bool> 移動相対(KVariables variables, string[] arguments)
@@ -148,7 +153,7 @@ namespace HLTStudio.KScripts
 
 		private static double Calculate(KVariables variables, string argument)
 		{
-			return KCalc.Internal_Calculate(variables, new string[] { argument });
+			return KCalc.Calculate(variables, new string[] { argument });
 		}
 
 		private static int CalculateFrame(KVariables variables, string argument)

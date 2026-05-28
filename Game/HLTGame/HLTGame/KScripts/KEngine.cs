@@ -94,60 +94,41 @@ namespace HLTStudio.KScripts
 
 		private static bool CalculateCondition(KVariables variables, string[] arguments)
 		{
-			for (int index = 0; index < arguments.Length; index++)
+			if (arguments.Length == 3)
 			{
-				string token = arguments[index];
+				double value1 = Calculate(variables, arguments[0]);
+				string strOperator = arguments[1];
+				double value2 = Calculate(variables, arguments[2]);
 
-				if (IsComparisonOperator(token))
-				{
-					double left = Calculate(variables, CopyRange(arguments, 0, index));
-					double right = Calculate(variables, CopyRange(arguments, index + 1, arguments.Length - index - 1));
+				if (strOperator == "=")
+					return value1 == value2;
 
-					if (token == "==")
-						return left == right;
-					if (token == "!=")
-						return left != right;
-					if (token == "<")
-						return left < right;
-					if (token == ">")
-						return left > right;
-					if (token == "<=")
-						return left <= right;
-					if (token == ">=")
-						return left >= right;
-				}
+				if (strOperator == "<>")
+					return value1 != value2;
+
+				if (strOperator == "<")
+					return value1 < value2;
+
+				if (strOperator == ">")
+					return value1 > value2;
+
+				if (strOperator == "<=")
+					return value1 <= value2;
+
+				if (strOperator == ">=")
+					return value1 >= value2;
 			}
 			return Calculate(variables, arguments) != 0.0;
 		}
 
-		private static bool IsComparisonOperator(string token)
-		{
-			return
-				token == "==" ||
-				token == "!=" ||
-				token == "<" ||
-				token == ">" ||
-				token == "<=" ||
-				token == ">=";
-		}
-
-		private static string[] CopyRange(string[] arguments, int start, int length)
-		{
-			string[] ret = new string[length];
-
-			Array.Copy(arguments, start, ret, 0, length);
-
-			return ret;
-		}
-
 		private static double Calculate(KVariables variables, string argument)
 		{
-			return KCalc.Internal_Calculate(variables, new string[] { argument });
+			return KCalc.Calculate(variables, new string[] { argument });
 		}
 
 		private static double Calculate(KVariables variables, string[] arguments)
 		{
-			return KCalc.Internal_Calculate(variables, arguments);
+			return KCalc.Calculate(variables, arguments);
 		}
 	}
 }
