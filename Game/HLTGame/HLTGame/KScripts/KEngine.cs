@@ -8,6 +8,13 @@ namespace HLTStudio.KScripts
 {
 	public static class KEngine
 	{
+		private const string COMPARISON_EQUAL = "==";
+		private const string COMPARISON_NOT_EQUAL = "!=";
+		private const string COMPARISON_LESS_THAN = "<";
+		private const string COMPARISON_GREATER_THAN = ">";
+		private const string COMPARISON_LESS_THAN_OR_EQUAL = "<=";
+		private const string COMPARISON_GREATER_THAN_OR_EQUAL = ">=";
+
 		public static IEnumerable<bool> Run(KVariables variables, string functionName, string[] arguments)
 		{
 			foreach (var relay in RunFunction(variables, functionName, arguments))
@@ -100,22 +107,22 @@ namespace HLTStudio.KScripts
 				string strOperator = arguments[1];
 				double value2 = Calculate(variables, arguments[2]);
 
-				if (strOperator == "=")
+				if (strOperator == COMPARISON_EQUAL)
 					return value1 == value2;
 
-				if (strOperator == "<>")
+				if (strOperator == COMPARISON_NOT_EQUAL)
 					return value1 != value2;
 
-				if (strOperator == "<")
+				if (strOperator == COMPARISON_LESS_THAN)
 					return value1 < value2;
 
-				if (strOperator == ">")
+				if (strOperator == COMPARISON_GREATER_THAN)
 					return value1 > value2;
 
-				if (strOperator == "<=")
+				if (strOperator == COMPARISON_LESS_THAN_OR_EQUAL)
 					return value1 <= value2;
 
-				if (strOperator == ">=")
+				if (strOperator == COMPARISON_GREATER_THAN_OR_EQUAL)
 					return value1 >= value2;
 			}
 			return Calculate(variables, arguments) != 0.0;

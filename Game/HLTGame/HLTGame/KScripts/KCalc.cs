@@ -8,13 +8,22 @@ namespace HLTStudio.KScripts
 {
 	public static class KCalc
 	{
+		private const string OPERATOR_ASSIGNMENT = "=";
+		private const string OPERATOR_ADD = "+";
+		private const string OPERATOR_SUBTRACT = "-";
+		private const string OPERATOR_MULTIPLY = "*";
+		private const string OPERATOR_DIVIDE = "/";
+		private const string OPERATOR_MODULO = "%";
+		private const string TOKEN_OPEN_PARENTHESIS = "(";
+		private const string TOKEN_CLOSE_PARENTHESIS = ")";
+
 		public static void Run(KVariables variables, string[] arguments)
 		{
 			if (arguments.Length < 3)
 				throw new Exception("計算式が短すぎます。");
 
-			if (arguments[1] != "=")
-				throw new Exception("計算式の2番目のトークンは [[ = ]] である必要があります。");
+			if (arguments[1] != OPERATOR_ASSIGNMENT)
+				throw new Exception($"計算式の2番目のトークンは [[ {OPERATOR_ASSIGNMENT} ]] である必要があります。");
 
 			double value = Calculate(variables, arguments, 2);
 
@@ -45,12 +54,12 @@ namespace HLTStudio.KScripts
 			{
 				string token = arguments[index];
 
-				if (token == "+")
+				if (token == OPERATOR_ADD)
 				{
 					index++;
 					value += ParseTerm(variables, arguments, ref index);
 				}
-				else if (token == "-")
+				else if (token == OPERATOR_SUBTRACT)
 				{
 					index++;
 					value -= ParseTerm(variables, arguments, ref index);
@@ -71,17 +80,17 @@ namespace HLTStudio.KScripts
 			{
 				string token = arguments[index];
 
-				if (token == "*")
+				if (token == OPERATOR_MULTIPLY)
 				{
 					index++;
 					value *= ParseFactor(variables, arguments, ref index);
 				}
-				else if (token == "/")
+				else if (token == OPERATOR_DIVIDE)
 				{
 					index++;
 					value /= ParseFactor(variables, arguments, ref index);
 				}
-				else if (token == "%")
+				else if (token == OPERATOR_MODULO)
 				{
 					index++;
 					value %= ParseFactor(variables, arguments, ref index);
@@ -102,18 +111,25 @@ namespace HLTStudio.KScripts
 			string token = arguments[index];
 			index++;
 
-			if (token == "(")
+			if (token == TOKEN_OPEN_PARENTHESIS)
 			{
 				double value = ParseExpression(variables, arguments, ref index);
 
-				if (arguments.Length <= index || arguments[index] != ")")
-					throw new Exception("対応する [[ ) ]] がありません。");
+				if (arguments.Length <= index || arguments[index] != TOKEN_CLOSE_PARENTHESIS)
+					throw new Exception($"対応する [[ {TOKEN_CLOSE_PARENTHESIS} ]] がありません。");
 
 				index++;
 				return value;
 			}
 
-			if (token == "+" || token == "-" || token == "*" || token == "/" || token == "%" || token == ")")
+			if (
+				token == OPERATOR_ADD ||
+				token == OPERATOR_SUBTRACT ||
+				token == OPERATOR_MULTIPLY ||
+				token == OPERATOR_DIVIDE ||
+				token == OPERATOR_MODULO ||
+				token == TOKEN_CLOSE_PARENTHESIS
+				)
 				throw new Exception("計算式の値が必要な位置に演算子があります。");
 
 			double number;
