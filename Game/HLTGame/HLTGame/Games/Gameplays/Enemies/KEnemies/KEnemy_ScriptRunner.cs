@@ -23,6 +23,10 @@ namespace HLTStudio.Games.Gameplays.Enemies.KEnemies
 			: base(x, y, 1)
 		{
 			this.F_Script = SCommon.Supplier(KEngine.Run(new KVariables(this), scriptName, scriptParameters));
+
+			// 最初の1フレーム分をここで実行する。
+			// -- 敵の状態の初期化をここで完了させるため。
+			this.F_Script();
 		}
 
 		protected override IEnumerable<bool> E_EachFrame2()
