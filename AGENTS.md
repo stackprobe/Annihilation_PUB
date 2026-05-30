@@ -27,7 +27,7 @@
 
 * 既存ファイルの文字コードと改行コードは維持してください。
 * `.cs` ファイルは UTF-8 with BOM / CRLF とします。
+* `.md` ファイルは UTF-8 with BOM / CRLF とします。
 * `.txt` ファイルは Shift_JIS (CP932) / CRLF とします。
 * `.bat` ファイルは Shift_JIS (CP932) / CRLF とします。
-* `.ps1` ファイルは UTF-8 / CRLF とします。
 * 無関係な文字コード変換や改行コード変換は避けてください。

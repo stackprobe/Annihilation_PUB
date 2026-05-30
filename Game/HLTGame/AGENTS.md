@@ -43,7 +43,15 @@ TestBuild.bat
   * UTF-8 with BOM
   * CRLF
 
+* `.md` ファイル
+  * UTF-8 with BOM
+  * CRLF
+
 * `.txt` ファイル
+  * Shift_JIS (CP932)
+  * CRLF
+
+* `.bat` ファイル
   * Shift_JIS (CP932)
   * CRLF
 
