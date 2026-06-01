@@ -116,7 +116,7 @@
     <Compile Include="Games\Gameplays\Enemies\Items\ItemBase.cs" />
     <Compile Include="Games\Gameplays\Enemies\Items\OrdinaryItem.cs" />
     <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemyBase.cs" />
-    <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemy_Sample.cs" />
+    <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemy_Ordinary.cs" />
     <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemy_ScriptRunner.cs" />
     <Compile Include="Games\Gameplays\Enemies\OrdinaryEnemy.cs" />
     <Compile Include="Games\Gameplays\Enemies\OrdinaryEnemy2.cs" />

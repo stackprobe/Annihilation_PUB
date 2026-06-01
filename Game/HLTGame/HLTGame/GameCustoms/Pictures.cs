@@ -19,6 +19,7 @@ namespace HLTStudio.GameCustoms
 
 		public static APicture OrdinaryEnemy = new APicture(@"ChatGPT\Annihilation\Enemy\OrdinaryEnemy.png");
 		public static APicture OrdinaryEnemy2 = new APicture(@"ChatGPT\Annihilation\Enemy\OrdinaryEnemy2.png");
+		public static APicture KOrdinaryEnemy = new APicture(@"ChatGPT\Annihilation\Enemy\KOrdinaryEnemy.png");
 		public static APicture OrdinaryBullet = new APicture(@"ChatGPT\Annihilation\Enemy\OrdinaryBullet.png");
 		public static APicture OrdinaryLearnableBullet = new APicture(@"ChatGPT\Annihilation\Enemy\OrdinaryLearnableBullet.png");
 		public static APicture OrdinaryLearnableBullet2 = new APicture(@"ChatGPT\Annihilation\Enemy\OrdinaryLearnableBullet2.png");
