@@ -44,7 +44,7 @@ namespace HLTStudio.Games.Gameplays.Scenarios
 					{
 						GEMain.I.EnemyController.Add(new KEnemy_Ordinary(
 							SCommon.CRandom.GetDoubleRange(10.0, BattleField.Screen.W - 20.0),
-							-100.0
+							-30.0
 							));
 					}
 

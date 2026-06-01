@@ -159,8 +159,6 @@
     <Compile Include="GameCustoms\Pictures.cs" />
     <Compile Include="GameCustoms\SoundEffects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\GameTools.cs" />
-    <Compile Include="Tools\XORShift.cs" />
     <Compile Include="UProgram.cs" />
     <EmbeddedResource Include="GameCommons\LibbonDialog.resx">
       <DependentUpon>LibbonDialog.cs</DependentUpon>
