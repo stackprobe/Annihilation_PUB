@@ -1203,6 +1203,12 @@ namespace HLTStudio.GameCommons
 			value += target;
 		}
 
+		public static void Approach(ref D2Point value, D2Point target, double rate)
+		{
+			DD.Approach(ref value.X, target.X, rate);
+			DD.Approach(ref value.Y, target.Y, rate);
+		}
+
 		public static void Countdown(ref int counter)
 		{
 			if (0 < counter)
