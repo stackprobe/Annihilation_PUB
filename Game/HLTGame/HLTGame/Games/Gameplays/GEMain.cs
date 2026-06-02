@@ -55,8 +55,8 @@ namespace HLTStudio.Games.Gameplays
 		{
 			Musics.BattleField.Play();
 
-			this.PlayerActor.X = BattleField.Screen.W * 0.5;
-			this.PlayerActor.Y = BattleField.Screen.H * 0.9;
+			this.PlayerActor.X = GEConsts.PLAYER_SPAWN_X;
+			this.PlayerActor.Y = GEConsts.PLAYER_SPAWN_Y;
 
 			for (; ; )
 			{
@@ -162,67 +162,12 @@ namespace HLTStudio.Games.Gameplays
 				DD.EachFrame();
 			}
 
-			double x = BattleField.Screen.W * 0.5;
-			double y = BattleField.Screen.H * 0.5;
-
-			double aIz = 0.1;
-
-			foreach (AScene scene in AScene.Create(60))
-			{
-				// プレイヤー移動
-				{
-					double speed = PlayerActor.MOVE_SPEED;
-
-					if (Inputs.SLOW.GetInput() >= 1)
-						speed = PlayerActor.MOVE_SPEED_SLOW;
-
-					if (Inputs.DIR_4.GetInput() >= 1)
-					{
-						x -= speed;
-					}
-					else if (Inputs.DIR_6.GetInput() >= 1)
-					{
-						x += speed;
-					}
-					if (Inputs.DIR_8.GetInput() >= 1)
-					{
-						y -= speed;
-					}
-					else if (Inputs.DIR_2.GetInput() >= 1)
-					{
-						y += speed;
-					}
-
-					x = SCommon.ToRange(x, 0.0, BattleField.Screen.W);
-					y = SCommon.ToRange(y, 0.0, BattleField.Screen.H);
-				}
-
-				DD.Approach(ref aIz, 1.0, 0.9);
-
-				this.Background.Draw();
-
-				using (BattleField.Screen.Section())
-				{
-					DD.Draw(BattleField.FreeScreen.GetPicture(), new D4Rect(0, 0, BattleField.Screen.W, BattleField.Screen.H));
-
-					DD.SetAlpha(redFogRate);
-					DD.SetBright(new D3Color(1, 0, 0));
-					DD.Draw(Pictures.WhiteBox, new D4Rect(0, 0, BattleField.Screen.W, BattleField.Screen.H));
-
-					DD.SetAlpha(aIz);
-					DD.SetZoom(1.0 / aIz);
-					DD.Draw(Pictures.Gemina_自機, new D2Point(x, y));
-				}
-
-				this.BattleField.DrawToMainScreen();
-
-				DD.EachFrame();
-			}
-
 			DD.TL.Add(SCommon.Supplier(this.PlayerActor.KilledEffect(this.PlayerActor.X, this.PlayerActor.Y)));
 
-			this.PlayerActor.X = x;
-			this.PlayerActor.Y = y;
+			this.PlayerActor.X = GEConsts.PLAYER_SPAWN_X;
+			this.PlayerActor.Y = GEConsts.PLAYER_SPAWN_Y;
+
+			this.PlayerActor.StartRespawnInvincible();
 
 			this.BombCount = GEConsts.INIT_BOMB_COUNT;
 

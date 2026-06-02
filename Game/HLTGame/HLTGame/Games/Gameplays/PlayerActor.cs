@@ -67,7 +67,11 @@ namespace HLTStudio.Games.Gameplays
 
 		// ====
 
+		private const int RESPAWN_INVINCIBLE_FRAME_MAX = 120;
+
 		private double CurrFieldRadius = 0.0;
+		private int CurrRespawnInvincibleFrame = 0;
+		private double RespawnEffectRate = 0.0;
 
 		public void EachFrame()
 		{
@@ -128,6 +132,18 @@ namespace HLTStudio.Games.Gameplays
 					throw null; // never
 			}
 
+			if (this.CurrRespawnInvincibleFrame != 0)
+			{
+				if (this.CurrRespawnInvincibleFrame > RESPAWN_INVINCIBLE_FRAME_MAX)
+					this.CurrRespawnInvincibleFrame = 0;
+				else
+					this.CurrRespawnInvincibleFrame++;
+
+				DD.Approach(ref this.RespawnEffectRate, 0.0, 0.97);
+			}
+
+			bool respawnInvicibleFlag = this.CurrRespawnInvincibleFrame != 0;
+
 			if (this.FieldActiveFlag)
 			{
 				WeaponLarning.AbsorbBullet();
@@ -147,6 +163,14 @@ namespace HLTStudio.Games.Gameplays
 				DD.Draw(Pictures.WhiteCircle, new D2Point(this.X, this.Y));
 			}
 
+			if (respawnInvicibleFlag)
+			{
+				DD.SetAlpha(0.8 * this.RespawnEffectRate);
+				DD.SetZoom(1.0 + this.RespawnEffectRate * 3.0);
+				DD.Draw(Pictures.Gemina_自機, new D2Point(this.X, this.Y));
+
+				DD.SetAlpha(0.5);
+			}
 			DD.Draw(Pictures.Gemina_自機, new D2Point(this.X, this.Y));
 
 			if (slowFlag)
@@ -156,7 +180,8 @@ namespace HLTStudio.Games.Gameplays
 				DD.Draw(Pictures.WhiteCircle, new D2Point(this.X, this.Y));
 			}
 
-			this.Crash = ACrash.CreatePoint(new D2Point(this.X, this.Y));
+			if (!respawnInvicibleFlag)
+				this.Crash = ACrash.CreatePoint(new D2Point(this.X, this.Y));
 		}
 
 		private void Attack()
@@ -197,6 +222,12 @@ namespace HLTStudio.Games.Gameplays
 
 				yield return true;
 			}
+		}
+
+		public void StartRespawnInvincible()
+		{
+			this.CurrRespawnInvincibleFrame = 1;
+			this.RespawnEffectRate = 1.0;
 		}
 	}
 }

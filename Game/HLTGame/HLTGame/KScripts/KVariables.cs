@@ -5,6 +5,8 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using HLTStudio.Games.Gameplays.Enemies.KEnemies;
+using HLTStudio.Commons;
+using HLTStudio.Games.Gameplays;
 
 namespace HLTStudio.KScripts
 {
@@ -54,15 +56,40 @@ namespace HLTStudio.KScripts
 				throw null; // never
 
 			if (name == VAR_NAME_X)
-				this.Enemy.X = value;
+			{
+				double x = value;
+
+				if (x < -KEnemyConsts.BATTLE_FIELD_EXTENT || BattleField.Screen.W + KEnemyConsts.BATTLE_FIELD_EXTENT < x)
+					throw new Exception("不正な位置(X)が設定されました。" + x);
+
+				this.Enemy.X = x;
+			}
 			else if (name == VAR_NAME_Y)
-				this.Enemy.Y = value;
+			{
+				double y = value;
+
+				if (y < -KEnemyConsts.BATTLE_FIELD_EXTENT || BattleField.Screen.H + KEnemyConsts.BATTLE_FIELD_EXTENT < y)
+					throw new Exception("不正な位置(Y)が設定されました。" + y);
+
+				this.Enemy.Y = y;
+			}
 			else if (name == VAR_NAME_HP)
-				this.Enemy.HP = (int)value;
+			{
+				int hp = (int)value;
+
+				if (hp < 1 || SCommon.IMAX < hp)
+					throw new Exception("不正な体力が設定されました。" + hp);
+
+				this.Enemy.HP = hp;
+			}
 			else if (this.Variables.ContainsKey(name))
+			{
 				this.Variables[name] = value;
+			}
 			else
+			{
 				this.Variables.Add(name, value);
+			}
 		}
 	}
 }

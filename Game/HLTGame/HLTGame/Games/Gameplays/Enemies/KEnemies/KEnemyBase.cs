@@ -15,18 +15,14 @@ namespace HLTStudio.Games.Gameplays.Enemies.KEnemies
 	{
 		protected KEnemyBase(double x, double y, int hp)
 		{
-			{
-				const double MARGIN = 300.0;
+			if (
+				x < -KEnemyConsts.BATTLE_FIELD_EXTENT || BattleField.Screen.W + KEnemyConsts.BATTLE_FIELD_EXTENT < x ||
+				y < -KEnemyConsts.BATTLE_FIELD_EXTENT || BattleField.Screen.H + KEnemyConsts.BATTLE_FIELD_EXTENT < y
+				)
+				throw new Exception($"出現位置がバトルフィールドから離れすぎています。({x}, {y})");
 
-				if (
-					x < -MARGIN || BattleField.Screen.W + MARGIN < x ||
-					y < -MARGIN || BattleField.Screen.H + MARGIN < y
-					)
-					throw new Exception("出現位置がバトルフィールドから離れすぎています。");
-			}
-
-			if (hp < 0 || SCommon.IMAX < hp)
-				throw new Exception("不正な体力(0～)");
+			if (hp < 1 || SCommon.IMAX < hp)
+				throw new Exception("不正な体力：" + hp);
 
 			this.Initialize(x, y, hp);
 		}

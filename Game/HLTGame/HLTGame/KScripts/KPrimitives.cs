@@ -18,6 +18,7 @@ namespace HLTStudio.KScripts
 		private const string COMMAND_WAIT = "待つ";
 		private const string COMMAND_PICTURE = "画像";
 		private const string COMMAND_RADIUS = "半径";
+		private const string COMMAND_THIS_IS_BULLET = "これは敵弾";
 
 		public static bool IsPrimitiveCommand(string name)
 		{
@@ -28,7 +29,8 @@ namespace HLTStudio.KScripts
 				name == COMMAND_MOVE_ANGLE ||
 				name == COMMAND_WAIT ||
 				name == COMMAND_PICTURE ||
-				name == COMMAND_RADIUS;
+				name == COMMAND_RADIUS ||
+				name == COMMAND_THIS_IS_BULLET;
 		}
 
 		public static IEnumerable<bool> Run(KVariables variables, string name, string[] arguments)
@@ -66,6 +68,11 @@ namespace HLTStudio.KScripts
 			else if (name == COMMAND_RADIUS)
 			{
 				foreach (var relay in 半径(variables, arguments))
+					yield return relay;
+			}
+			else if (name == COMMAND_THIS_IS_BULLET)
+			{
+				foreach (var relay in これは敵弾(variables, arguments))
 					yield return relay;
 			}
 			else
@@ -147,6 +154,13 @@ namespace HLTStudio.KScripts
 		public static IEnumerable<bool> 半径(KVariables variables, string[] arguments)
 		{
 			variables.Enemy.CharacterRadius = double.Parse(arguments[0]);
+
+			yield break;
+		}
+
+		public static IEnumerable<bool> これは敵弾(KVariables variables, string[] arguments)
+		{
+			variables.Enemy.HP = 0;
 
 			yield break;
 		}

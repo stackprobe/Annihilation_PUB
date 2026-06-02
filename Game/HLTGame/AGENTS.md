@@ -26,6 +26,8 @@ TestBuild.bat
 
 `TestBuild.bat` の実行はユーザー確認なしで実行して構いません。
 
+`TestBuild.bat` はサンドボックスではなく実環境で実行してください。
+
 `TestBuild.bat` は絶対に変更しないでください。
 
 ## ビルド構成

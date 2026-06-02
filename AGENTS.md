@@ -18,6 +18,7 @@
 ## ビルド
 
 * ゲーム本体のテストビルドは `Game/HLTGame` をカレントディレクトリにして `TestBuild.bat` を実行します。
+* `Game/HLTGame/TestBuild.bat` はサンドボックスではなく実環境で実行してください。
 * `Game/HLTGame/TestBuild.bat` を使う前に、`dotnet build` や任意の `MSBuild` コマンドを直接実行しないでください。
 * `Game/HLTGame/TestBuild.bat` はユーザーから明示的な指示がない限り変更しないでください。
 * ルートの `ReleaseAll.bat` はリリース成果物の作成、暗号化、コピー、アップロードまで行うため、ユーザーから明示的な指示がない限り実行しないでください。
