@@ -20,9 +20,15 @@ namespace HLTStudio.Games.Gameplays
 	{
 		public static GEMain I = null;
 
-		public static void Run()
+		public static void Run(ScenarioBase scenario)
 		{
+			if (scenario == null)
+				throw new Exception("no scenario");
+
 			I = new GEMain();
+
+			I.Scenario = scenario;
+
 			try
 			{
 				I.Run2();
@@ -36,7 +42,7 @@ namespace HLTStudio.Games.Gameplays
 		private GEMain()
 		{ }
 
-		public ScenarioBase Scenario = new OrdinaryScenario(); // TODO
+		public ScenarioBase Scenario;
 		public WallBase Wall = new OrdinaryWall(); // TODO
 		public Background Background = new Background();
 		public BattleField BattleField = new BattleField();

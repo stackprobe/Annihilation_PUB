@@ -12,21 +12,15 @@ namespace HLTStudio.Games.Gameplays.Scenarios
 {
 	public class OrdinaryScenario : ScenarioBase
 	{
-		protected override IEnumerable<bool> E_EachFrame()
+		protected override IEnumerable<int> E_EachFrame()
 		{
-			foreach (AScene scene in AScene.Create(30))
-			{
-				yield return true;
-			}
+			yield return 30;
 
 			for (; ; )
 			{
 				GEMain.I.EnemyController.Add(new KEnemy_ScriptRunner("ザコ敵", BattleField.Screen.H / 3, -100.0));
 
-				foreach (AScene scene in AScene.Create(120))
-				{
-					yield return true;
-				}
+				yield return 120;
 
 				foreach (AScene scene in AScene.Create(600))
 				{
@@ -48,13 +42,10 @@ namespace HLTStudio.Games.Gameplays.Scenarios
 							));
 					}
 
-					yield return true;
+					yield return 1;
 				}
 
-				foreach (AScene scene in AScene.Create(120))
-				{
-					yield return true;
-				}
+				yield return 120;
 			}
 		}
 	}

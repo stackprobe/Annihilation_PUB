@@ -124,6 +124,14 @@
     <Compile Include="Games\Gameplays\EnemyController.cs" />
     <Compile Include="Games\Gameplays\GEConsts.cs" />
     <Compile Include="Games\Gameplays\GEMain.cs" />
+    <Compile Include="Games\Gameplays\GEMaster.cs" />
+    <Compile Include="Games\Gameplays\Scenarios\OrdinaryScenario2.cs" />
+    <Compile Include="Games\Gameplays\Scenarios\StageScenario_06.cs" />
+    <Compile Include="Games\Gameplays\Scenarios\StageScenario_05.cs" />
+    <Compile Include="Games\Gameplays\Scenarios\StageScenario_04.cs" />
+    <Compile Include="Games\Gameplays\Scenarios\StageScenario_03.cs" />
+    <Compile Include="Games\Gameplays\Scenarios\StageScenario_02.cs" />
+    <Compile Include="Games\Gameplays\Scenarios\StageScenario_01.cs" />
     <Compile Include="Games\Gameplays\Walls\WallBase.cs" />
     <Compile Include="Games\Gameplays\Walls\OrdinaryWall.cs" />
     <Compile Include="Games\Gameplays\PlayerActor.cs" />

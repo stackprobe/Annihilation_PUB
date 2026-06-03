@@ -14,8 +14,8 @@ namespace HLTStudio.GameCustoms
 		public static APicture Transparent = new APicture(@"General\Transparent.png");
 		public static APicture Copyright = new APicture(@"Handmade\Copyright.png");
 
-		public static APicture Gemina_自機 = new APicture(@"ChatGPT\Annihilation\Gemina\自機.png");
-		public static APicture Gemina_立ち絵 = new APicture(@"ChatGPT\Annihilation\Gemina\立ち絵.png");
+		public static APicture Player_自機 = new APicture(@"ChatGPT\Annihilation\Gemina\自機.png");
+		public static APicture Player_立ち絵 = new APicture(@"ChatGPT\Annihilation\Gemina\立ち絵.png");
 
 		public static APicture OrdinaryEnemy = new APicture(@"ChatGPT\Annihilation\Enemy\OrdinaryEnemy.png");
 		public static APicture OrdinaryEnemy2 = new APicture(@"ChatGPT\Annihilation\Enemy\OrdinaryEnemy2.png");

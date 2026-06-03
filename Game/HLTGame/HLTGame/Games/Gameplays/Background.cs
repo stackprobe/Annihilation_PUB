@@ -22,7 +22,7 @@ namespace HLTStudio.Games.Gameplays
 				110.0
 				));
 
-			DD.Draw(Pictures.Gemina_立ち絵, new D2Point(
+			DD.Draw(Pictures.Player_立ち絵, new D2Point(
 				790.0,
 				SCommon.ToInt(272.0 + 10.0 * Math.Sin(DD.ProcFrame * 0.03))
 				));

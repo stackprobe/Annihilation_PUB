@@ -8,6 +8,7 @@ using HLTStudio.Drawings;
 using HLTStudio.GameCommons;
 using HLTStudio.GameCustoms;
 using HLTStudio.Games.Gameplays;
+using HLTStudio.Games.Gameplays.Scenarios;
 
 namespace HLTStudio.Games.FrontEnds
 {
@@ -113,7 +114,7 @@ namespace HLTStudio.Games.FrontEnds
 		{
 			Leave();
 
-			GEMain.Run();
+			GEMaster.Run(0);
 
 			Enter();
 		}

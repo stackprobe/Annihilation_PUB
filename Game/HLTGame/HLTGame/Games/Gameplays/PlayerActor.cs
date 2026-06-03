@@ -166,12 +166,12 @@ namespace HLTStudio.Games.Gameplays
 			if (respawnInvicibleFlag)
 			{
 				DD.SetAlpha(0.8 * this.RespawnEffectRate);
-				DD.SetZoom(1.0 + this.RespawnEffectRate * 3.0);
-				DD.Draw(Pictures.Gemina_自機, new D2Point(this.X, this.Y));
+				DD.SetZoom(1.0 + this.RespawnEffectRate * 7.0);
+				DD.Draw(Pictures.Player_自機, new D2Point(this.X, this.Y));
 
 				DD.SetAlpha(0.5);
 			}
-			DD.Draw(Pictures.Gemina_自機, new D2Point(this.X, this.Y));
+			DD.Draw(Pictures.Player_自機, new D2Point(this.X, this.Y));
 
 			if (slowFlag)
 			{

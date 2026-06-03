@@ -15,6 +15,14 @@
 * 仕様や挙動が不明な場合は、既存コードとユーザーの指示を優先して判断してください。
 * 指示がない大規模リファクタリング、無関係な自動整形、一括整形は避けてください。
 
+## 敵・敵弾・ステージシナリオ
+
+敵、敵弾、ステージシナリオを追加・修正する場合は、対象ファイルに近い以下の `AGENTS.md` も確認してください。
+
+* 敵: `Game/HLTGame/HLTGame/Games/Gameplays/Enemies/KEnemies/AGENTS.md`
+* 敵弾: `Game/HLTGame/HLTGame/Games/Gameplays/Enemies/Bullets/AGENTS.md`
+* ステージシナリオ: `Game/HLTGame/HLTGame/Games/Gameplays/Scenarios/AGENTS.md`
+
 ## ビルド
 
 * ゲーム本体のテストビルドは `Game/HLTGame` をカレントディレクトリにして `TestBuild.bat` を実行します。

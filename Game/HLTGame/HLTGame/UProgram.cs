@@ -9,6 +9,7 @@ using HLTStudio.Drawings;
 using HLTStudio.GameCommons;
 using HLTStudio.Games.Gameplays;
 using HLTStudio.Games.FrontEnds;
+using HLTStudio.Games.Gameplays.Scenarios;
 
 namespace HLTStudio
 {
@@ -42,7 +43,7 @@ namespace HLTStudio
 #if DEBUG
 		private void Test01()
 		{
-			GEMain.Run();
+			GEMain.Run(new OrdinaryScenario());
 		}
 #endif
 
