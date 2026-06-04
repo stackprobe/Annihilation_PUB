@@ -106,6 +106,7 @@
     <Compile Include="Games\FrontEnds\TitleMenu.cs" />
     <Compile Include="Games\Gameplays\Background.cs" />
     <Compile Include="Games\Gameplays\BattleField.cs" />
+    <Compile Include="Games\Gameplays\Enemies\Bullets\Bullet_LoiteringLearnable.cs" />
     <Compile Include="Games\Gameplays\Enemies\Bullets\BulletBase.cs" />
     <Compile Include="Games\Gameplays\Enemies\Bullets\OrdinaryBullet.cs" />
     <Compile Include="Games\Gameplays\Enemies\Bullets\OrdinaryLearnableBullet2.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Games\Gameplays\Enemies\Items\OrdinaryItem.cs" />
     <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemyBase.cs" />
     <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemyConsts.cs" />
+    <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemy_LoiteringShooter.cs" />
     <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemy_Ordinary.cs" />
     <Compile Include="Games\Gameplays\Enemies\KEnemies\KEnemy_ScriptRunner.cs" />
     <Compile Include="Games\Gameplays\Enemies\OrdinaryEnemy.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="Games\Gameplays\WeaponLarning.cs" />
     <Compile Include="Games\Gameplays\Weapons\AnnihilateExplode.cs" />
     <Compile Include="Games\Gameplays\Weapons\Bomb.cs" />
+    <Compile Include="Games\Gameplays\Weapons\LoiteringLearnedWeapon.cs" />
     <Compile Include="Games\Gameplays\Weapons\OrdinaryLearnedWeapon2.cs" />
     <Compile Include="Games\Gameplays\Weapons\OrdinaryLearnedWeapon.cs" />
     <Compile Include="Games\Gameplays\Weapons\OrdinaryWeapon.cs" />

@@ -31,6 +31,13 @@ namespace HLTStudio.Games.Gameplays
 					GEMain.I.WeaponController.Add(new OrdinaryLearnedWeapon2());
 				}
 			}
+			else if (GEMain.I.LearnedWeapon == typeof(Bullet_LoiteringLearnable))
+			{
+				if (DD.ProcFrame % 4 == 0)
+				{
+					GEMain.I.WeaponController.Add(new LoiteringLearnedWeapon());
+				}
+			}
 			else
 			{
 				throw null; // never
@@ -44,6 +51,10 @@ namespace HLTStudio.Games.Gameplays
 				GEMain.I.WeaponController.Add(new AnnihilateExplode(weapon.X, weapon.Y)); // 仮
 			}
 			else if (weapon is OrdinaryLearnedWeapon2)
+			{
+				GEMain.I.WeaponController.Add(new AnnihilateExplode(weapon.X, weapon.Y)); // 仮
+			}
+			else if (weapon is LoiteringLearnedWeapon)
 			{
 				GEMain.I.WeaponController.Add(new AnnihilateExplode(weapon.X, weapon.Y)); // 仮
 			}

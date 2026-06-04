@@ -16,6 +16,10 @@ namespace HLTStudio.Games.Gameplays.Scenarios
 		{
 			yield return 30;
 
+			GEMain.I.EnemyController.Add(new KEnemy_LoiteringShooter(300.0, -30.0));
+
+			yield return 60;
+
 			for (; ; )
 			{
 				GEMain.I.EnemyController.Add(new KEnemy_ScriptRunner("ザコ敵", BattleField.Screen.H / 3, -100.0));
