@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Security.Cryptography;
+using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -5563,6 +5565,78 @@ namespace HLTStudio.Commons
 			public static StreamWriter OpenTextFileForAppend(string file, Encoding encoding)
 			{
 				return new StreamWriter(file, true, encoding);
+			}
+		}
+
+		public static class OpenHandle_m
+		{
+			private const string NAME_PREFIX_LOCAL = "Local\\";
+			private const string NAME_PREFIX_GLOBAL = "Global\\";
+
+			public static Mutex Mutex(string name)
+			{
+				return new Mutex(false, NAME_PREFIX_LOCAL + name);
+			}
+
+			public static Mutex MutexGlobal(string name)
+			{
+				return new Mutex(false, NAME_PREFIX_GLOBAL + name, out bool createNew, CreateMutexSecurityFull());
+			}
+
+			public static EventWaitHandle NamedEvent(string name)
+			{
+				return new EventWaitHandle(false, EventResetMode.AutoReset, NAME_PREFIX_LOCAL + name);
+			}
+
+			public static EventWaitHandle NamedEventManual(string name)
+			{
+				return new EventWaitHandle(false, EventResetMode.ManualReset, NAME_PREFIX_LOCAL + name);
+			}
+
+			public static EventWaitHandle NamedEventGlobal(string name)
+			{
+				return new EventWaitHandle(false, EventResetMode.AutoReset, NAME_PREFIX_GLOBAL + name, out bool createNew, CreateEventWaitHandleSecurityFull());
+			}
+
+			public static EventWaitHandle NamedEventGlobalManual(string name)
+			{
+				return new EventWaitHandle(false, EventResetMode.ManualReset, NAME_PREFIX_GLOBAL + name, out bool createNew, CreateEventWaitHandleSecurityFull());
+			}
+
+			private static MutexSecurity CreateMutexSecurityFull()
+			{
+				MutexSecurity security = new MutexSecurity();
+
+				security.AddAccessRule(
+					new MutexAccessRule(
+						new SecurityIdentifier(
+							WellKnownSidType.WorldSid,
+							null
+							),
+						MutexRights.FullControl,
+						AccessControlType.Allow
+					)
+				);
+
+				return security;
+			}
+
+			private static EventWaitHandleSecurity CreateEventWaitHandleSecurityFull()
+			{
+				EventWaitHandleSecurity security = new EventWaitHandleSecurity();
+
+				security.AddAccessRule(
+					new EventWaitHandleAccessRule(
+						new SecurityIdentifier(
+							WellKnownSidType.WorldSid,
+							null
+							),
+						EventWaitHandleRights.FullControl,
+						AccessControlType.Allow
+					)
+				);
+
+				return security;
 			}
 		}
 
