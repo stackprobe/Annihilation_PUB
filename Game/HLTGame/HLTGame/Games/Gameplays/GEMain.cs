@@ -20,10 +20,14 @@ namespace HLTStudio.Games.Gameplays
 	{
 		public static GEMain I = null;
 
+		public static bool ReturnToTitleFlag = false;
+
 		public static void Run(ScenarioBase scenario)
 		{
 			if (scenario == null)
 				throw new Exception("no scenario");
+
+			ReturnToTitleFlag = false; // reset
 
 			I = new GEMain();
 
@@ -73,7 +77,10 @@ namespace HLTStudio.Games.Gameplays
 					this.Pause();
 
 					if (this.Pause_ReturnToTitle)
+					{
+						ReturnToTitleFlag = true;
 						break;
+					}
 				}
 				if (ProcMain.DEBUG && AKeyboard.GetInput(DX.KEY_INPUT_F11) == 1) // デバッグ用_処理落ち
 				{
@@ -119,6 +126,7 @@ namespace HLTStudio.Games.Gameplays
 					else
 					{
 						this.Gameover();
+						ReturnToTitleFlag = true;
 						break;
 					}
 				}

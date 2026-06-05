@@ -14,7 +14,7 @@ namespace HLTStudio.Games.Gameplays.Enemies.KEnemies
 {
 	public class KEnemy_ScriptRunner : KEnemyBase
 	{
-		public double CharacterRadius = 30.0;
+		public Func<D2Point, ACrash> CrashGetter = pt => ACrash.CreateNone();
 		public APicture Picture = Pictures.Transparent;
 
 		private Func<bool> F_Script;
@@ -38,7 +38,7 @@ namespace HLTStudio.Games.Gameplays.Enemies.KEnemies
 
 				DD.Draw(this.GetPicture(), new D2Point(this.X, this.Y));
 
-				this.Crash = ACrash.CreateCircle(new D2Point(this.X, this.Y), this.CharacterRadius);
+				this.Crash = this.CrashGetter(new D2Point(this.X, this.Y));
 
 				yield return true;
 			}
@@ -46,7 +46,7 @@ namespace HLTStudio.Games.Gameplays.Enemies.KEnemies
 
 		protected override double GetCharacterRadius()
 		{
-			return this.CharacterRadius;
+			throw null; // 不使用
 		}
 
 		protected override APicture GetPicture()

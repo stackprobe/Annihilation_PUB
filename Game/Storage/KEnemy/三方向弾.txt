@@ -1,0 +1,11 @@
+SPEED = P1
+
+自機の角度 R
+
+R1 = R - 20
+R2 = R
+R3 = R + 20
+
+発射 弾 R1 SPEED
+発射 弾 R2 SPEED
+発射 弾 R3 SPEED

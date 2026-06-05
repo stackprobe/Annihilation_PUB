@@ -43,7 +43,8 @@ namespace HLTStudio
 #if DEBUG
 		private void Test01()
 		{
-			GEMain.Run(new OrdinaryScenario());
+			//GEMain.Run(new OrdinaryScenario());
+			GEMain.Run(new StageScenario_01());
 		}
 #endif
 

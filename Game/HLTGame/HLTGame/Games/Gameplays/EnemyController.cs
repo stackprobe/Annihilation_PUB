@@ -8,6 +8,7 @@ using HLTStudio.GameCommons;
 using HLTStudio.GameCustoms;
 using HLTStudio.Games.Gameplays.Enemies;
 using HLTStudio.Games.Gameplays.Enemies.Bullets;
+using HLTStudio.Games.Gameplays.Enemies.KEnemies;
 
 namespace HLTStudio.Games.Gameplays
 {
@@ -47,7 +48,7 @@ namespace HLTStudio.Games.Gameplays
 
 		public void EraseBullet()
 		{
-			this.Enemies.RemoveAll(enemy => enemy is BulletBase);
+			this.Enemies.RemoveAll(enemy => enemy is BulletBase || (enemy is KEnemy_ScriptRunner && enemy.HP == 0));
 		}
 	}
 }

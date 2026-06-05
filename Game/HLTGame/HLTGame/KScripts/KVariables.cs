@@ -59,8 +59,9 @@ namespace HLTStudio.KScripts
 			{
 				double x = value;
 
-				if (x < -KEnemyConsts.BATTLE_FIELD_EXTENT || BattleField.Screen.W + KEnemyConsts.BATTLE_FIELD_EXTENT < x)
-					throw new Exception("不正な位置(X)が設定されました。" + x);
+				//if (x < -KEnemyConsts.BATTLE_FIELD_EXTENT || BattleField.Screen.W + KEnemyConsts.BATTLE_FIELD_EXTENT < x)
+				//throw new Exception("不正な位置(X)が設定されました。" + x);
+				x = SCommon.ToRange(x, -KEnemyConsts.BATTLE_FIELD_EXTENT, BattleField.Screen.W + KEnemyConsts.BATTLE_FIELD_EXTENT); // HACK
 
 				this.Enemy.X = x;
 			}
@@ -68,8 +69,9 @@ namespace HLTStudio.KScripts
 			{
 				double y = value;
 
-				if (y < -KEnemyConsts.BATTLE_FIELD_EXTENT || BattleField.Screen.H + KEnemyConsts.BATTLE_FIELD_EXTENT < y)
-					throw new Exception("不正な位置(Y)が設定されました。" + y);
+				//if (y < -KEnemyConsts.BATTLE_FIELD_EXTENT || BattleField.Screen.H + KEnemyConsts.BATTLE_FIELD_EXTENT < y)
+				//throw new Exception("不正な位置(Y)が設定されました。" + y);
+				y = SCommon.ToRange(y, -KEnemyConsts.BATTLE_FIELD_EXTENT, BattleField.Screen.H + KEnemyConsts.BATTLE_FIELD_EXTENT); // HACK
 
 				this.Enemy.Y = y;
 			}

@@ -24,6 +24,9 @@ namespace HLTStudio.Games.Gameplays
 			for (int si = firstStageIndex; si <= STAGES.Length; si++)
 			{
 				GEMain.Run(STAGES[si]());
+
+				if (GEMain.ReturnToTitleFlag)
+					break;
 			}
 		}
 	}

@@ -87,9 +87,11 @@ namespace HLTStudio.KScripts
 
 		private static IEnumerable<bool> RunCommandOrFunction(KVariables variables, string name, string[] arguments)
 		{
-			if (KPrimitives.IsPrimitiveCommand(name))
+			var primitive = KPrimitives.Run(variables, name, arguments);
+
+			if (primitive != null)
 			{
-				foreach (var relay in KPrimitives.Run(variables, name, arguments))
+				foreach (var relay in primitive)
 					yield return relay;
 			}
 			else
