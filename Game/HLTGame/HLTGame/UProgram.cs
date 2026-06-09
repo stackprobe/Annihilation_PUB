@@ -50,7 +50,8 @@ namespace HLTStudio
 
 		private void Main4()
 		{
-			Logo.Run();
+			//Logo.Run();
+			TitleMenu.Run();
 		}
 	}
 }

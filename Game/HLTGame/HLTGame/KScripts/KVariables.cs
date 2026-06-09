@@ -44,6 +44,9 @@ namespace HLTStudio.KScripts
 			if (name == VAR_NAME_HP)
 				return (double)this.Enemy.HP;
 
+			if (name == "RND")
+				return SCommon.CRandom.GetRate();
+
 			if (this.Variables.ContainsKey(name))
 				return this.Variables[name];
 
