@@ -11,7 +11,7 @@ namespace HLTStudio.KScripts
 	{
 		public static readonly string DUMMY_NAME = "<DUMMY>";
 
-		public static readonly string RESDIR_SCRIPT = "KEnemy";
-		public static readonly string RESDIR_PICTURE = "KEnemy\\画像";
+		public static readonly string RESDIR_SCRIPT = "スクリプト置き場";
+		public static readonly string RESDIR_PICTURE = "スクリプト置き場\\画像";
 	}
 }

@@ -17,8 +17,7 @@ namespace HLTStudio.KScripts
 
 		public static IEnumerable<bool> Run(KVariables variables, string functionName, string[] arguments)
 		{
-			foreach (var relay in RunFunction(variables, functionName, arguments))
-				yield return relay;
+			return RunFunction(variables, functionName, arguments);
 		}
 
 		private static IEnumerable<bool> RunFunction(KVariables variables, string functionName, string[] arguments)

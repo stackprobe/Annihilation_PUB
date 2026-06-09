@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace HLTStudio.Games.Gameplays.Scenarios
 {
-	public class StageScenario_06 : ScenarioBase
+	public class StageScenario_05 : StageScenarioBase
 	{
-		protected override IEnumerable<int> E_EachFrame()
+		protected override int GetStageNumber()
 		{
-			for (; ; )
-			{
-				yield return 1;
-			}
+			return 5;
 		}
 	}
 }

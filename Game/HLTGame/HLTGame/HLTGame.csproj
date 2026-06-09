@@ -128,6 +128,7 @@
     <Compile Include="Games\Gameplays\GEMain.cs" />
     <Compile Include="Games\Gameplays\GEMaster.cs" />
     <Compile Include="Games\Gameplays\Scenarios\OrdinaryScenario2.cs" />
+    <Compile Include="Games\Gameplays\Scenarios\StageScenarioBase.cs" />
     <Compile Include="Games\Gameplays\Scenarios\StageScenario_06.cs" />
     <Compile Include="Games\Gameplays\Scenarios\StageScenario_05.cs" />
     <Compile Include="Games\Gameplays\Scenarios\StageScenario_04.cs" />

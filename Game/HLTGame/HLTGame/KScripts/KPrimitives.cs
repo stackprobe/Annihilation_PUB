@@ -18,6 +18,10 @@ namespace HLTStudio.KScripts
 			{
 				return 発射(variables, arguments);
 			}
+			else if (name == "生成")
+			{
+				return 生成(variables, arguments);
+			}
 			else if (name == "アプローチ相対")
 			{
 				return アプローチ相対(variables, arguments);
@@ -75,6 +79,18 @@ namespace HLTStudio.KScripts
 				variables.Enemy.X,
 				variables.Enemy.Y,
 				SolveVarNames(variables, arguments, 1)
+				));
+
+			yield break;
+		}
+
+		private static IEnumerable<bool> 生成(KVariables variables, string[] arguments)
+		{
+			GEMain.I.EnemyController.Add(new KEnemy_ScriptRunner(
+				arguments[0],
+				Calculate(variables, arguments[1]),
+				Calculate(variables, arguments[2]),
+				SolveVarNames(variables, arguments, 3)
 				));
 
 			yield break;

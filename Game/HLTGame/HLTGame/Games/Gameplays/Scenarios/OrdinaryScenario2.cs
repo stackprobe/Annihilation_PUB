@@ -26,7 +26,30 @@ namespace HLTStudio.Games.Gameplays.Scenarios
 
 			GEMain.I.EnemyController.Add(new OrdinaryEnemy2(SCommon.CRandom.GetRate() < 0.25));
 
-			yield return 600;
+			yield return 180;
+
+			GEMain.I.EnemyController.Add(new KEnemy_ScriptRunner("クラゲ", 38, 0));
+			yield return 20;
+			GEMain.I.EnemyController.Add(new KEnemy_ScriptRunner("クラゲ", 76, 0));
+			yield return 20;
+			GEMain.I.EnemyController.Add(new KEnemy_ScriptRunner("クラゲ", 114, 0));
+
+			yield return 120;
+
+			GEMain.I.EnemyController.Add(new KEnemy_ScriptRunner("クラゲ", 418, 0));
+			yield return 20;
+			GEMain.I.EnemyController.Add(new KEnemy_ScriptRunner("クラゲ", 380, 0));
+			yield return 20;
+			GEMain.I.EnemyController.Add(new KEnemy_ScriptRunner("クラゲ", 342, 0));
+
+			yield return 300;
+
+			// ====
+
+			var subScenario = new OrdinaryScenario();
+
+			while (subScenario.EachFrame())
+				yield return 1;
 		}
 	}
 }

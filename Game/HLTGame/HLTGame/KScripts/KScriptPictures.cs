@@ -19,8 +19,18 @@ namespace HLTStudio.KScripts
 				throw null; // never
 
 			if (!Cache.ContainsKey(name))
+			{
+#if !true // 本来はこちら
 				Cache.Add(name, new APicture(() => DD.GetStorageFileData(Path.Combine(KScriptConsts.RESDIR_PICTURE, name + ".png"))));
+#else // zantei zantei zantei zantei zantei
+				string resPath = Path.Combine(ProcMain.SelfDir, KScriptConsts.RESDIR_PICTURE);
+				if (!Directory.Exists(resPath)) resPath = Path.Combine(@"..\..\..\..", KScriptConsts.RESDIR_PICTURE);
+				resPath = Path.Combine(resPath, name + ".png");
+				byte[] resData = File.ReadAllBytes(resPath);
 
+				Cache.Add(name, new APicture(() => new DD.LzData(resData.Length, () => resData)));
+#endif
+			}
 			return Cache[name];
 		}
 	}

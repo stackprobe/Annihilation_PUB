@@ -8,6 +8,6 @@ namespace HLTStudio.Games.Gameplays.Enemies.KEnemies
 {
 	public static class KEnemyConsts
 	{
-		public const double BATTLE_FIELD_EXTENT = 300.0;
+		public const double BATTLE_FIELD_EXTENT = 1000.0;
 	}
 }

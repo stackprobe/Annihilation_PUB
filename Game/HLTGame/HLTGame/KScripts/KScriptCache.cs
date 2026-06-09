@@ -20,8 +20,15 @@ namespace HLTStudio.KScripts
 
 			if (!Cache.ContainsKey(name))
 			{
+#if !true // 本来はこちら
 				string resPath = Path.Combine(KScriptConsts.RESDIR_SCRIPT, name + ".txt");
 				byte[] resData = DD.GetStorageFileData(resPath).Data.Value;
+#else // zantei zantei zantei zantei zantei
+				string resPath = Path.Combine(ProcMain.SelfDir, KScriptConsts.RESDIR_SCRIPT);
+				if (!Directory.Exists(resPath)) resPath = Path.Combine(@"..\..\..\..", KScriptConsts.RESDIR_SCRIPT);
+				resPath = Path.Combine(resPath, name + ".txt");
+				byte[] resData = File.ReadAllBytes(resPath);
+#endif
 				string resText = BinaryToText(resData);
 				string[] resLines = SCommon.TextToLines(resText);
 

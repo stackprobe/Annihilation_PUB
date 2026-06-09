@@ -25,7 +25,9 @@ namespace HLTStudio.Games.Gameplays.Weapons
 
 				this.Y -= 30.0;
 
-				if (this.Y < -100.0) // 画面外に出たので消える。(自力で退場する方式！)
+				// 画面外でもクラッシュ判定は行われるので、画面外に出たらすぐに消えること。
+
+				if (this.Y < -30.0) // 画面外に出たので消える。(自力で退場する方式！)
 					break;
 
 				DD.SetSize(new D2Size(16.0, 16.0));
